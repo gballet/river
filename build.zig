@@ -172,6 +172,7 @@ pub fn build(b: *Build) !void {
         river.linkSystemLibrary("wlroots-0.18");
         river.linkSystemLibrary("xkbcommon");
         river.linkSystemLibrary("pixman-1");
+        river.addLibraryPath(.{ .cwd_relative = "/usr/lib/riscv64-linux-gnu" });
 
         river.root_module.addImport("wayland", wayland);
         river.root_module.addImport("xkbcommon", xkbcommon);
@@ -209,6 +210,7 @@ pub fn build(b: *Build) !void {
         riverctl.root_module.addImport("flags", flags);
         riverctl.root_module.addImport("wayland", wayland);
         riverctl.linkLibC();
+        riverctl.addLibraryPath(.{ .cwd_relative = "/usr/lib/riscv64-linux-gnu" });
         riverctl.linkSystemLibrary("wayland-client");
 
         scanner.addCSource(riverctl);
@@ -234,6 +236,7 @@ pub fn build(b: *Build) !void {
         rivertile.root_module.addImport("flags", flags);
         rivertile.root_module.addImport("wayland", wayland);
         rivertile.linkLibC();
+	rivertile.addLibraryPath(.{ .cwd_relative = "/usr/lib/riscv64-linux-gnu" });
         rivertile.linkSystemLibrary("wayland-client");
 
         scanner.addCSource(rivertile);
